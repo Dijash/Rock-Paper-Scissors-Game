@@ -41,5 +41,14 @@ while True:
     if play_again != "y":
         print("Thanks for playing! 👋")
         break
-    
-        
+
+# Display scoreboard
+    print("\n📊 Scoreboard:")
+    print(f"You: {score['user']} | Computer: {score['computer']} | Ties: {score['ties']}")
+
+    play_again = input("\nDo you want to play again? (y/n): ").lower()
+    if play_again != "y":
+        print("\nFinal Scoreboard:")
+        print(f"You: {score['user']} | Computer: {score['computer']} | Ties: {score['ties']}")
+        print("Thanks for playing! 👋")
+        break
