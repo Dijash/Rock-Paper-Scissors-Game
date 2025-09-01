@@ -31,18 +31,29 @@ def determine_winnner(user_choice, computer_choice):
 # --- Main Game Loop ---
 print("🎮 Welcome to Rock-Paper-Scissors!")
 
-while True:
-    user_input = user_choice()
-    computer_choicee = computer_choice()
-    print("\nYou chose: "+str(user_input))
-    print("Computer chose: "+str(computer_choicee))
-    print(determine_winnner(user_input, computer_choicee))
-    play_again = input("\nDo you want to play again? (y/n): ").lower()
-    if play_again != "y":
-        print("Thanks for playing! 👋")
-        break
+# Scoreboard
+score = {"user": 0, "computer": 0, "ties": 0}
 
-# Display scoreboard
+while True:
+    user_choice = get_user_choice()
+    computer_choice = get_computer_choice()
+
+    print(f"\nYou chose: {choice_to_string(user_choice)}")
+    print(f"Computer chose: {choice_to_string(computer_choice)}")
+
+    winner = determine_winner(user_choice, computer_choice)
+
+    if winner == "tie":
+        print("It's a tie!")
+        score["ties"] += 1
+    elif winner == "user":
+        print("You win!")
+        score["user"] += 1
+    else:
+        print("Computer wins!")
+        score["computer"] += 1
+
+    # Display scoreboard
     print("\n📊 Scoreboard:")
     print(f"You: {score['user']} | Computer: {score['computer']} | Ties: {score['ties']}")
 
